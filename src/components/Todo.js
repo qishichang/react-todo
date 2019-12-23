@@ -1,18 +1,33 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Todo extends Component {
-    render() {
-        return (
-            <div>
-                <p>{ this.props.todo.title }</p>
-            </div>
-        )
-    }
+  getStyle = () => ({
+    background: '#f4f4f4',
+    padding: '10px',
+    borderBottom: '1px #ccc dotted',
+    textDecoration: this.props.todo.completed ? 'line-through' : 'none'
+  });
+  render() {
+    const { id, title } = this.props.todo;
+    return (
+      <div style={this.getStyle()}>
+        <p>
+          <label>
+            <input
+              type="checkbox"
+              checked={this.props.todo.completed}
+              onChange={this.props.markComplete.bind(this, id)}
+            />{' '}
+            {title}
+          </label>
+        </p>
+      </div>
+    );
+  }
 }
 
 // PropTypes
 Todo.propTypes = {
-    todo: PropTypes.object.isRequired
-}
-
+  todo: PropTypes.object.isRequired
+};

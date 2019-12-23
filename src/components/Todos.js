@@ -9,7 +9,7 @@ export default class Todos extends Component {
       <div>
         <h1>Todos</h1>
         {this.props.todos.map(todo => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} markComplete={this.props.markComplete} />
         ))}
       </div>
     );
