@@ -21,6 +21,7 @@ export default class Todo extends Component {
             />{' '}
             {title}
           </label>
+          <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}>x</button>
         </p>
       </div>
     );
@@ -29,5 +30,21 @@ export default class Todo extends Component {
 
 // PropTypes
 Todo.propTypes = {
-  todo: PropTypes.object.isRequired
+  todo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired
+  }),
+  markComplete: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired
 };
+
+const btnStyle = {
+  background: '#ff0000',
+  color: '#fff',
+  border: 'none',
+  padding: '5px 9px',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  float: 'right'
+}

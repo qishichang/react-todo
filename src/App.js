@@ -23,11 +23,20 @@ class App extends Component {
   // Toggle Complete
   markComplete = id => {
     this.setState(preState => ({
-      todos: preState.todos.map(todo => {
+      todos: [...preState.todos.map(todo => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
         }
         return todo;
+      })]
+    }));
+  };
+
+  // Delete Todo
+  delTodo = id => {
+    this.setState(preState => ({
+      todos: preState.todos.filter(todo => {
+        return todo.id !== id;
       })
     }));
   };
@@ -35,7 +44,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <Todos
+          todos={this.state.todos}
+          markComplete={this.markComplete}
+          delTodo={this.delTodo}
+        />
       </div>
     );
   }
