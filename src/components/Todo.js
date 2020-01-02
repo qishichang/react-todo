@@ -31,7 +31,7 @@ export default class Todo extends Component {
 // PropTypes
 Todo.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }),
